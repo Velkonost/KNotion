@@ -1,31 +1,13 @@
 package com.velkonost.knotion.model.page.block
 
 import com.velkonost.knotion.extension.UuidString
+import com.velkonost.knotion.internal.model.emojiOrFile.FileImpl
+import com.velkonost.knotion.internal.model.page.block.*
 import com.velkonost.knotion.internal.utils.DateUtils
 import com.velkonost.knotion.model.Timestamp
 import com.velkonost.knotion.model.emojiOrFile.EmojiOrFile
 import com.velkonost.knotion.model.richText.RichTextAnnotations
 import com.velkonost.knotion.model.richText.RichTextList
-import com.velkonost.knotion.internal.model.page.block.BookmarkBlockImpl
-import com.velkonost.knotion.internal.model.page.block.BulletedListItemBlockImpl
-import com.velkonost.knotion.internal.model.page.block.CalloutBlockImpl
-import com.velkonost.knotion.internal.model.page.block.CodeBlockImpl
-import com.velkonost.knotion.internal.model.page.block.DividerBlockImpl
-import com.velkonost.knotion.internal.model.page.block.EmbedBlockImpl
-import com.velkonost.knotion.internal.model.page.block.EquationBlockImpl
-import com.velkonost.knotion.internal.model.page.block.Heading1BlockImpl
-import com.velkonost.knotion.internal.model.page.block.Heading2BlockImpl
-import com.velkonost.knotion.internal.model.page.block.Heading3BlockImpl
-import com.velkonost.knotion.internal.model.page.block.ImageBlockImpl
-import com.velkonost.knotion.internal.model.page.block.NumberedListItemBlockImpl
-import com.velkonost.knotion.internal.model.page.block.ParagraphBlockImpl
-import com.velkonost.knotion.internal.model.page.block.QuoteBlockImpl
-import com.velkonost.knotion.internal.model.page.block.SyncedBlockImpl
-import com.velkonost.knotion.internal.model.page.block.TableOfContentsBlockImpl
-import com.velkonost.knotion.internal.model.page.block.ToDoBlockImpl
-import com.velkonost.knotion.internal.model.page.block.ToggleBlockImpl
-import com.velkonost.knotion.internal.model.page.block.VideoBlockImpl
-import com.velkonost.knotion.internal.model.emojiOrFile.FileImpl
 import kotlin.jvm.JvmOverloads
 
 /**
@@ -70,7 +52,6 @@ class MutableBlockList(
         children = children,
     )
 
-    @JvmOverloads
     fun heading1(richTextList: RichTextList): MutableBlockList =
         add(com.velkonost.knotion.model.page.block.heading1(richTextList))
 
@@ -449,8 +430,8 @@ fun toDo(
 
 fun toggle(richTextList: RichTextList): Block = ToggleBlockImpl(
     id = "",
-    created = RichTextAnnotations,
-    lastEdited = RichTextAnnotations,
+    created = DateUtils.nowMillis(),
+    lastEdited = DateUtils.nowMillis(),
     richTextList,
     null,
 )

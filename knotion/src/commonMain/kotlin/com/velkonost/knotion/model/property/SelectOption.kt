@@ -1,5 +1,6 @@
 package com.velkonost.knotion.model.property
 
+import com.velkonost.knotion.internal.model.property.SelectOptionImpl
 import com.velkonost.knotion.model.Color
 
 interface SelectOption {

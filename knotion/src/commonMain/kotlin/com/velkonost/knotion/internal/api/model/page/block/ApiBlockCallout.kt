@@ -1,9 +1,8 @@
 package com.velkonost.knotion.internal.api.model.page.block
 
-import com.velkonost.knotion.internal.api.model.richtext.ApiRichText
+import com.velkonost.knotion.internal.api.model.emojiOrFile.ApiEmojiOrFile
+import com.velkonost.knotion.internal.api.model.richText.ApiRichText
 import kotlinx.serialization.Serializable
-import org.jraf.klibnotion.internal.api.model.base.ApiEmojiOrFile
-import org.jraf.klibnotion.internal.api.model.richtext.ApiRichText
 
 @Serializable
 internal data class ApiBlockCallout(

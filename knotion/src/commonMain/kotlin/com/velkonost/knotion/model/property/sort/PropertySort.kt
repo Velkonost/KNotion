@@ -1,7 +1,7 @@
 package com.velkonost.knotion.model.property.sort
 
 class PropertySort {
-    private val sorting: MutableList<Pair<String, Direction>> = mutableListOf()
+    internal val sorting: MutableList<Pair<String, Direction>> = mutableListOf()
 
     private fun add(propertyName: String, direction: Direction): PropertySort {
         sorting += propertyName to direction

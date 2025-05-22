@@ -4,7 +4,6 @@ import com.velkonost.knotion.extension.UuidString
 import com.velkonost.knotion.model.Reference
 import com.velkonost.knotion.model.Timestamp
 import com.velkonost.knotion.model.emojiOrFile.EmojiOrFile
-import com.velkonost.knotion.model.emojiOrFile.File
 import com.velkonost.knotion.model.property.spec.PropertySpec
 import com.velkonost.knotion.model.richText.RichTextList
 
@@ -19,5 +18,5 @@ interface Database {
     val created: Timestamp
     val lastEdited: Timestamp
     val icon: EmojiOrFile?
-    val cover: File?
+    val cover: EmojiOrFile?
 }

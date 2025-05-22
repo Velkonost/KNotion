@@ -1,6 +1,6 @@
 package com.velkonost.knotion.internal.api.model.page.block
 
-import com.velkonost.knotion.internal.api.model.richtext.ApiRichText
+import com.velkonost.knotion.internal.api.model.richText.ApiRichText
 import kotlinx.serialization.Serializable
 
 /**

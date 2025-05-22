@@ -5,7 +5,6 @@ import com.velkonost.knotion.model.Reference
 import com.velkonost.knotion.model.Timestamp
 import com.velkonost.knotion.model.database.Database
 import com.velkonost.knotion.model.emojiOrFile.EmojiOrFile
-import com.velkonost.knotion.model.emojiOrFile.File
 import com.velkonost.knotion.model.property.spec.PropertySpec
 import com.velkonost.knotion.model.richText.RichTextList
 
@@ -17,5 +16,5 @@ internal data class DatabaseImpl(
     override val created: Timestamp,
     override val lastEdited: Timestamp,
     override val icon: EmojiOrFile?,
-    override val cover: File?,
+    override val cover: EmojiOrFile?,
 ) : Database

@@ -1,7 +1,11 @@
 package com.velkonost.knotion.internal.client
 
 import com.velkonost.knotion.client.*
+import com.velkonost.knotion.internal.client.blocks.di.BlocksModule
 import com.velkonost.knotion.internal.client.databases.di.DatabasesModule
+import com.velkonost.knotion.internal.client.pages.di.PagesModule
+import com.velkonost.knotion.internal.client.search.di.SearchModule
+import com.velkonost.knotion.internal.client.users.di.UsersModule
 import com.velkonost.knotion.internal.network.di.networkModule
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -19,7 +23,11 @@ internal class KNotionClientImpl(
         loadKoinModules(
             listOf(
                 networkModule(token),
-                DatabasesModule
+                DatabasesModule,
+                PagesModule,
+                BlocksModule,
+                UsersModule,
+                SearchModule
             )
         )
     }

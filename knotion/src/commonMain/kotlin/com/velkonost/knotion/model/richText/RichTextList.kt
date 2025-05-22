@@ -1,13 +1,20 @@
 package com.velkonost.knotion.model.richText
 
 import com.velkonost.knotion.extension.UuidString
+import com.velkonost.knotion.internal.model.richText.RichTextBaseImpl
+import com.velkonost.knotion.internal.model.richText.RichTextEquationImpl
+import com.velkonost.knotion.internal.model.richText.mention.RichTextDatabaseMentionImpl
+import com.velkonost.knotion.internal.model.richText.mention.RichTextDateMentionImpl
+import com.velkonost.knotion.internal.model.richText.mention.RichTextPageMentionImpl
+import com.velkonost.knotion.internal.model.richText.mention.RichTextUserMentionImpl
+import com.velkonost.knotion.internal.model.user.PersonImpl
 import com.velkonost.knotion.model.date.DateOrDateRange
 import com.velkonost.knotion.model.date.DateOrDateTime
 import kotlinx.serialization.Serializable
 
 @Serializable
 class RichTextList {
-    private val items: MutableList<RichText> = mutableListOf()
+    val items: MutableList<RichText> = mutableListOf()
 
     val plainText: String
         get() = items.joinToString(separator = "") { it.plainText }
@@ -26,7 +33,7 @@ class RichTextList {
         linkUrl: String? = null,
         annotations: RichTextAnnotations = RichTextAnnotations.DEFAULT,
     ) = add(
-        TextRichTextImpl(
+        RichTextBaseImpl(
             plainText = text,
             href = null,
             annotations = annotations,
@@ -38,7 +45,7 @@ class RichTextList {
         userId: UuidString,
         annotations: RichTextAnnotations = RichTextAnnotations.DEFAULT,
     ) = add(
-        UserMentionRichTextImpl(
+        RichTextUserMentionImpl(
             plainText = "",
             href = null,
             annotations = annotations,
@@ -50,7 +57,7 @@ class RichTextList {
         pageId: UuidString,
         annotations: RichTextAnnotations = RichTextAnnotations.DEFAULT,
     ) = add(
-        PageMentionRichTextImpl(
+        RichTextPageMentionImpl(
             plainText = "",
             href = null,
             annotations = annotations,
@@ -62,7 +69,7 @@ class RichTextList {
         databaseId: UuidString,
         annotations: RichTextAnnotations = RichTextAnnotations.DEFAULT,
     ) = add(
-        DatabaseMentionRichTextImpl(
+        RichTextDatabaseMentionImpl(
             plainText = "",
             href = null,
             annotations = annotations,
@@ -75,7 +82,7 @@ class RichTextList {
         end: DateOrDateTime? = null,
         annotations: RichTextAnnotations = RichTextAnnotations.DEFAULT,
     ) = add(
-        DateMentionRichTextImpl(
+        RichTextDateMentionImpl(
             plainText = "",
             href = null,
             annotations = annotations,
@@ -87,7 +94,7 @@ class RichTextList {
         expression: String,
         annotations: RichTextAnnotations = RichTextAnnotations.DEFAULT,
     ) = add(
-        EquationRichTextImpl(
+        RichTextEquationImpl(
             plainText = "",
             href = null,
             annotations = annotations,

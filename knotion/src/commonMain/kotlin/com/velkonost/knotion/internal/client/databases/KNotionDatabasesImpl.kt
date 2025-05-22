@@ -2,6 +2,11 @@ package com.velkonost.knotion.internal.client.databases
 
 import com.velkonost.knotion.client.KNotionDatabases
 import com.velkonost.knotion.extension.UuidString
+import com.velkonost.knotion.internal.api.model.database.query.ApiDatabaseQuerySort
+import com.velkonost.knotion.internal.api.model.database.request.*
+import com.velkonost.knotion.internal.api.model.database.toModel
+import com.velkonost.knotion.internal.api.model.database.toPaginationModel
+import com.velkonost.knotion.internal.api.model.page.toModel
 import com.velkonost.knotion.model.database.Database
 import com.velkonost.knotion.model.database.query.DatabaseQuery
 import com.velkonost.knotion.model.emojiOrFile.EmojiOrFile
@@ -17,13 +22,16 @@ internal class KNotionDatabasesImpl(
     private val service: DatabasesService
 ) : KNotionDatabases {
     override suspend fun getDatabase(id: UuidString): Database {
-        return service.getDatabase(id)
-            .apiToModel(ApiDatabaseConverter)
+        return service.getDatabase(id).toModel()
     }
 
     override suspend fun getDatabaseList(pagination: Pagination): ResultPage<Database> {
-        return service.getDatabaseList(pagination.startCursor)
-            .apiToModel(ApiPageResultDatabaseConverter)
+        val response = service.getDatabaseList(pagination.startCursor).toModel()
+        val results = response.results.map { it.toModel() }
+        return ResultPage(
+            results = results,
+            nextPagination = response.nextPagination
+        )
     }
 
     override suspend fun queryDatabase(
@@ -32,11 +40,35 @@ internal class KNotionDatabasesImpl(
         sort: PropertySort?,
         pagination: Pagination,
     ): ResultPage<Page> {
-        return service.queryDatabase(
-            id,
-            Triple(query, sort, pagination).modelToApi(ApiDatabaseQueryConverter),
+        val response = service.queryDatabase(
+            id = id,
+            request = QueryDatabaseRequest(
+                filter = query?.let {
+                    DatabaseQueryRequestFilters(
+                        or = query.anyFilters.toList().map { it.toApi() }
+                            .ifEmpty { null },
+                        and = query.allFilters.toList().map { it.toApi() }
+                            .ifEmpty { null },
+                    )
+                }?.let { if (it.or == null && it.and == null) null else it },
+                sorts = sort?.let { sortElem ->
+                    sortElem.sorting.map { (propertyName, direction) ->
+                        ApiDatabaseQuerySort(
+                            property = propertyName,
+                            direction = when (direction) {
+                                PropertySort.Direction.ASCENDING -> "ascending"
+                                PropertySort.Direction.DESCENDING -> "descending"
+                            }
+                        )
+                    }
+                },
+                startCursor = pagination.startCursor,
+            )
         )
-            .apiToModel(ApiPageResultPageConverter)
+        return ResultPage(
+            results = response.results.map { it.toModel() },
+            nextPagination = response.nextCursor?.toPaginationModel()
+        )
     }
 
     override suspend fun createDatabase(
@@ -47,15 +79,14 @@ internal class KNotionDatabasesImpl(
         properties: PropertySpecList,
     ): Database {
         return service.createDatabase(
-            DatabaseCreateParameters(
+            CreateDatabaseRequest(
                 parentPageId = parentPageId,
                 title = title,
                 icon = icon,
                 cover = cover,
-                properties = properties,
-            ).modelToApi(ApiDatabaseCreateParametersConverter)
-        )
-            .apiToModel(ApiDatabaseConverter)
+                properties = properties
+            )
+        ).toModel()
     }
 
     override suspend fun updateDatabase(
@@ -67,13 +98,12 @@ internal class KNotionDatabasesImpl(
     ): Database {
         return service.updateDatabase(
             id,
-            DatabaseUpdateParameters(
+            UpdateDatabaseRequest(
                 title = title,
                 icon = icon,
                 cover = cover,
                 properties = properties,
-            ).modelToApi(ApiDatabaseUpdateParametersConverter)
-        )
-            .apiToModel(ApiDatabaseConverter)
+            )
+        ).toModel()
     }
 }

@@ -25,6 +25,9 @@
 
 package com.velkonost.knotion.internal.api.model.emojiOrFile
 
+import com.velkonost.knotion.internal.model.emojiOrFile.EmojiImpl
+import com.velkonost.knotion.internal.model.emojiOrFile.FileImpl
+import com.velkonost.knotion.model.emojiOrFile.EmojiOrFile
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -34,3 +37,12 @@ internal data class ApiEmojiOrFile(
     val file: ApiFile? = null,
     val external: ApiFile? = null,
 )
+
+internal fun ApiEmojiOrFile.toModel(): EmojiOrFile? {
+    return when (type) {
+        "emoji" -> EmojiImpl(value = this.emoji!!)
+        "file" -> FileImpl(name = null, url = this.file!!.url)
+        "external" -> FileImpl(name = null, url = this.external!!.url)
+        else -> null
+    }
+}

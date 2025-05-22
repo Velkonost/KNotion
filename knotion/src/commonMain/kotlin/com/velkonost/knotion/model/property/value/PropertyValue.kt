@@ -1,24 +1,13 @@
 package com.velkonost.knotion.model.property.value
 
 import com.velkonost.knotion.extension.UuidString
+import com.velkonost.knotion.internal.model.property.SelectOptionImpl
+import com.velkonost.knotion.internal.model.property.value.*
+import com.velkonost.knotion.internal.model.user.PersonImpl
 import com.velkonost.knotion.model.Color
 import com.velkonost.knotion.model.date.DateOrDateRange
 import com.velkonost.knotion.model.richText.RichTextAnnotations
 import com.velkonost.knotion.model.richText.RichTextList
-import com.velkonost.knotion.internal.model.property.SelectOptionImpl
-import com.velkonost.knotion.internal.model.property.value.CheckboxPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.DatePropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.EmailPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.MultiSelectPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.NumberPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.PeoplePropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.PhoneNumberPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.RelationPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.RichTextPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.SelectPropertyValueImpl
-import com.velkonost.knotion.internal.model.property.value.TitlePropertyValueImpl
-import org.jraf.klibnotion.internal.model.property.value.UrlPropertyValueImpl
-import com.velkonost.knotion.internal.model.user.PersonImpl
 import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmOverloads
 
@@ -33,7 +22,7 @@ sealed interface PropertyValue<T> {
 }
 
 class PropertyValueList {
-    private val propertyValueList = mutableListOf<PropertyValue<*>>()
+    internal val propertyValueList = mutableListOf<PropertyValue<*>>()
 
     fun getAll(): List<PropertyValue<*>> = propertyValueList.toList()
 

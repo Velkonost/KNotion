@@ -25,6 +25,10 @@
 
 package com.velkonost.knotion.internal.api.model
 
+import com.velkonost.knotion.model.DatabaseReference
+import com.velkonost.knotion.model.PageReference
+import com.velkonost.knotion.model.Reference
+import com.velkonost.knotion.model.UnknownTypeReference
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -38,4 +42,16 @@ internal data class ApiReference(
     val databaseId: String? = null,
     @SerialName("page_id")
     val pageId: String? = null,
+)
+
+internal fun ApiReference.toDatabaseModel(): Reference = DatabaseReference(databaseId.orEmpty())
+internal fun ApiReference.toPageModel(): Reference = PageReference(pageId.orEmpty())
+internal fun ApiReference.toUnknownModel(): Reference = UnknownTypeReference(type.orEmpty())
+
+internal fun DatabaseReference.toApi(): ApiReference = ApiReference(
+    databaseId = this.id
+)
+
+internal fun PageReference.toApi(): ApiReference = ApiReference(
+    pageId = this.id
 )

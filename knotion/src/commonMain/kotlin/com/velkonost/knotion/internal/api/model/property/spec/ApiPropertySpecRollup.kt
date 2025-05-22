@@ -1,30 +1,7 @@
-/*
- * This source is part of the
- *      _____  ___   ____
- *  __ / / _ \/ _ | / __/___  _______ _
- * / // / , _/ __ |/ _/_/ _ \/ __/ _ `/
- * \___/_/|_/_/ |_/_/ (_)___/_/  \_, /
- *                              /___/
- * repository.
- *
- * Copyright (C) 2021-present Benoit 'BoD' Lubek (BoD@JRAF.org)
- * and contributors (https://github.com/BoD/klibnotion/graphs/contributors)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.velkonost.knotion.internal.api.model.property.spec
 
-package org.jraf.klibnotion.internal.api.model.property.spec
-
+import com.velkonost.knotion.model.property.spec.RollupPropertySpec
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 /**
@@ -32,9 +9,32 @@ import kotlinx.serialization.Serializable
  */
 @Serializable
 internal data class ApiPropertySpecRollup(
-    val relation_property_name: String,
-    val relation_property_id: String,
-    val rollup_property_name: String,
-    val rollup_property_id: String,
+    @SerialName("relation_property_name")
+    val relationPropertyName: String,
+    @SerialName("relation_property_id")
+    val relationPropertyId: String,
+    @SerialName("rollup_property_name")
+    val rollupPropertyName: String,
+    @SerialName("rollup_property_id")
+    val rollupPropertyId: String,
     val function: String,
 )
+
+internal fun String.toFunctionModel(): RollupPropertySpec.RollupFunction {
+    return when (this) {
+        "count_all" -> RollupPropertySpec.RollupFunction.COUNT_ALL
+        "count_values" -> RollupPropertySpec.RollupFunction.COUNT_VALUES
+        "count_unique_values" -> RollupPropertySpec.RollupFunction.COUNT_UNIQUE_VALUES
+        "count_empty" -> RollupPropertySpec.RollupFunction.COUNT_EMPTY
+        "count_not_empty" -> RollupPropertySpec.RollupFunction.COUNT_NOT_EMPTY
+        "percent_empty" -> RollupPropertySpec.RollupFunction.PERCENT_EMPTY
+        "percent_not_empty" -> RollupPropertySpec.RollupFunction.PERCENT_NOT_EMPTY
+        "sum" -> RollupPropertySpec.RollupFunction.SUM
+        "average" -> RollupPropertySpec.RollupFunction.AVERAGE
+        "median" -> RollupPropertySpec.RollupFunction.MEDIAN
+        "min" -> RollupPropertySpec.RollupFunction.MIN
+        "max" -> RollupPropertySpec.RollupFunction.MAX
+        "range" -> RollupPropertySpec.RollupFunction.RANGE
+        else -> RollupPropertySpec.RollupFunction.UNKNOWN
+    }
+}

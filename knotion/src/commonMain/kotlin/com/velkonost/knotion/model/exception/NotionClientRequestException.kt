@@ -12,7 +12,7 @@ class NotionClientRequestException(
     private var notionError: NotionError? = null
 
     private val code: String = notionError?.code ?: "unexpected"
-    override val message: String = notionError?.message ?: "Unexpected error: ${cause.message}"
+    override val message: String = notionError?.message ?: "Unexpected error: ${cause?.message}"
     private val detailsJson: String = notionError?.details?.toString() ?: "{}"
     private val status: Int? = notionError?.status
 

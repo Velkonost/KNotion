@@ -2,7 +2,6 @@ package com.velkonost.knotion.internal.api.model.property.spec
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.jraf.klibnotion.internal.api.model.property.spec.*
 
 /**
  * See [Reference](https://developers.notion.com/reference/database).

@@ -1,14 +1,11 @@
 package com.velkonost.knotion.internal.api.model.page.request
 
+import com.velkonost.knotion.internal.api.model.ApiReference
 import com.velkonost.knotion.model.emojiOrFile.EmojiOrFile
 import com.velkonost.knotion.model.emojiOrFile.File
 import com.velkonost.knotion.model.page.block.Block
-import com.velkonost.knotion.model.page.block.MutableBlockList
 import com.velkonost.knotion.model.property.value.PropertyValue
-import com.velkonost.knotion.model.property.value.PropertyValueList
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.JsonElement
-import org.jraf.klibnotion.internal.api.model.base.ApiReference
 
 /**
  * See [Reference](https://developers.notion.com/reference/post-page).

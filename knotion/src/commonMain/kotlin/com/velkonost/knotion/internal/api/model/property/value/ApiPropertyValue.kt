@@ -1,35 +1,26 @@
-/*
- * This source is part of the
- *      _____  ___   ____
- *  __ / / _ \/ _ | / __/___  _______ _
- * / // / , _/ __ |/ _/_/ _ \/ __/ _ `/
- * \___/_/|_/_/ |_/_/ (_)___/_/  \_, /
- *                              /___/
- * repository.
- *
- * Copyright (C) 2021-present Benoit 'BoD' Lubek (BoD@JRAF.org)
- * and contributors (https://github.com/BoD/klibnotion/graphs/contributors)
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+package com.velkonost.knotion.internal.api.model.property.value
 
-package org.jraf.klibnotion.internal.api.model.property.value
-
-import kotlinx.serialization.Serializable
-import org.jraf.klibnotion.internal.api.model.date.ApiDate
+import com.velkonost.knotion.internal.api.model.page.ApiDate
+import com.velkonost.knotion.internal.api.model.page.toDateModel
+import com.velkonost.knotion.internal.api.model.page.toModel
 import com.velkonost.knotion.internal.api.model.property.ApiSelectOption
-import org.jraf.klibnotion.internal.api.model.richtext.ApiRichText
-import org.jraf.klibnotion.internal.api.model.user.ApiUser
+import com.velkonost.knotion.internal.api.model.property.toModel
+import com.velkonost.knotion.internal.api.model.richText.ApiRichText
+import com.velkonost.knotion.internal.api.model.richText.toModel
+import com.velkonost.knotion.internal.api.model.user.ApiUser
+import com.velkonost.knotion.internal.api.model.user.toModel
+import com.velkonost.knotion.internal.model.property.value.*
+import com.velkonost.knotion.internal.model.property.value.formula.*
+import com.velkonost.knotion.internal.model.property.value.rollup.ArrayRollupPropertyValueImpl
+import com.velkonost.knotion.internal.model.property.value.rollup.DateRollupPropertyValueImpl
+import com.velkonost.knotion.internal.model.property.value.rollup.NumberRollupPropertyValueImpl
+import com.velkonost.knotion.internal.model.property.value.rollup.UnknownTypeRollupPropertyValueImpl
+import com.velkonost.knotion.model.property.value.FormulaPropertyValue
+import com.velkonost.knotion.model.property.value.PropertyValue
+import com.velkonost.knotion.model.property.value.RollupPropertyValue
+import com.velkonost.knotion.model.richText.RichTextList
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
 /**
  * See [Reference](https://developers.notion.com/reference/page#all-property-values).
@@ -42,10 +33,12 @@ internal data class ApiPropertyValue(
     val id: String = "",
 
     val type: String,
-    val rich_text: List<ApiRichText>? = null,
+    @SerialName("rich_text")
+    val richText: List<ApiRichText>? = null,
     val number: String? = null,
     val select: ApiSelectOption? = null,
-    val multi_select: List<ApiSelectOption>? = null,
+    @SerialName("multi_select")
+    val multiSelect: List<ApiSelectOption>? = null,
     val date: ApiDate? = null,
     val formula: ApiPropertyValueFormula? = null,
     val relation: List<ApiPropertyValueRelation>? = null,
@@ -56,9 +49,200 @@ internal data class ApiPropertyValue(
     val checkbox: Boolean? = null,
     val url: String? = null,
     val email: String? = null,
-    val phone_number: String? = null,
-    val created_time: String? = null,
-    val created_by: ApiUser? = null,
-    val last_edited_time: String? = null,
-    val last_edited_by: ApiUser? = null,
+    @SerialName("phone_number")
+    val phoneNumber: String? = null,
+    @SerialName("created_time")
+    val createdTime: String? = null,
+    @SerialName("created_by")
+    val createdBy: ApiUser? = null,
+    @SerialName("last_edited_time")
+    val lastEditedTime: String? = null,
+    @SerialName("last_edited_by")
+    val lastEditedBy: ApiUser? = null,
 )
+
+internal fun Pair<String, ApiPropertyValue>.toFormulaModel(): FormulaPropertyValue<*> {
+    val (name, apiPropertyValue) = this
+    val id = apiPropertyValue.id
+    val formula = apiPropertyValue.formula!!
+    return when (val type = formula.type) {
+        "string" -> StringFormulaPropertyValueImpl(
+            id = id,
+            name = name,
+            value = formula.string
+        )
+        "number" -> NumberFormulaPropertyValueImpl(
+            id = id,
+            name = name,
+            value = formula.number?.toDouble()
+        )
+        "boolean" -> BooleanFormulaPropertyValueImpl(
+            id = id,
+            name = name,
+            value = formula.boolean!!,
+        )
+        "date" -> DateFormulaPropertyValueImpl(
+            id = id,
+            name = name,
+            value = formula.date?.toModel()
+        )
+        else -> UnknownTypeFormulaPropertyValueImpl(
+            id = id,
+            name = name,
+            type = type,
+        )
+    }
+}
+
+internal fun Pair<String, ApiPropertyValue>.toRollupModel(): RollupPropertyValue<*> {
+    val (name, apiPropertyValue) = this
+    val id = apiPropertyValue.id
+    val rollup = apiPropertyValue.rollup!!
+    return when (val type = rollup.type) {
+        "number" -> NumberRollupPropertyValueImpl(
+            id = id,
+            name = name,
+            value = rollup.number?.toDouble()
+        )
+        "date" -> DateRollupPropertyValueImpl(
+            id = id,
+            name = name,
+            value = rollup.date?.toModel()
+        )
+        "array" -> ArrayRollupPropertyValueImpl(
+            id = id,
+            name = name,
+            value = rollup.array?.map { ("" to it).toModel() }
+        )
+
+        else -> UnknownTypeRollupPropertyValueImpl(
+            id = id,
+            name = name,
+            type = type,
+        )
+    }
+}
+
+internal fun Pair<String, ApiPropertyValue>.toModel(): PropertyValue<*> {
+    val (name, apiPropertyValue) = this
+    val id = apiPropertyValue.id
+    return when (val type = apiPropertyValue.type) {
+        "rich_text" -> RichTextPropertyValueImpl(
+            id = id,
+            name = name,
+            value = RichTextList().apply {
+                apiPropertyValue.richText?.map { it.toModel() }?.let { value ->
+                    items.addAll(value)
+                }
+            }
+        )
+
+        "number" -> NumberPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.number?.toDouble()
+        )
+
+        "select" -> SelectPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.select?.toModel()
+        )
+
+        "multi_select" -> MultiSelectPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.multiSelect!!.map { it.toModel() }
+        )
+
+        "date" -> DatePropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.date?.toModel()
+        )
+
+        "formula" -> this.toFormulaModel()
+        "relation" -> RelationPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.relation!!.map { it.id }
+        )
+
+        "rollup" -> this.toRollupModel()
+        "title" -> TitlePropertyValueImpl(
+            id = id,
+            name = name,
+            value = RichTextList().apply {
+                apiPropertyValue.title?.map { it.toModel() }?.let { value ->
+                    items.addAll(value)
+                }
+            }
+        )
+
+        "people" -> PeoplePropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.people!!.map { it.toModel() }
+        )
+
+        "files" -> FilesPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.files!!.map { it.toModel() }
+        )
+
+        "checkbox" -> CheckboxPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.checkbox!!
+        )
+
+        "url" -> UrlPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.url
+        )
+
+        "email" -> EmailPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.email
+        )
+
+        "phone_number" -> PhoneNumberPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.phoneNumber
+        )
+
+        "created_time" -> CreatedTimePropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.createdTime!!.toDateModel()
+        )
+
+        "created_by" -> CreatedByPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.createdBy!!.toModel()
+        )
+
+        "last_edited_time" -> LastEditedTimePropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.lastEditedTime!!.toDateModel()
+        )
+
+        "last_edited_by" -> LastEditedByPropertyValueImpl(
+            id = id,
+            name = name,
+            value = apiPropertyValue.lastEditedBy!!.toModel()
+        )
+
+        else -> UnknownTypePropertyValueImpl(
+            id = id,
+            name = name,
+            type = type,
+        )
+    }
+}

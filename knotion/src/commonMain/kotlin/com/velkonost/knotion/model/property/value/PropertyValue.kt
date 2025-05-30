@@ -12,15 +12,48 @@ import kotlinx.serialization.Serializable
 import kotlin.jvm.JvmOverloads
 
 /**
- * See [Reference](https://developers.notion.com/reference/page#all-property-values).
+ * Base interface for all property values in a Notion database.
+ * Property values represent the actual data stored in database properties,
+ * with each type of property having its own value type.
+ * 
+ * The generic type parameter [T] represents the type of the value:
+ * - [String] for text-based properties (email, url, phone)
+ * - [Boolean] for checkbox properties
+ * - [Number] for number properties
+ * - [DateOrDateTime] for date properties
+ * - [RichTextList] for rich text and title properties
+ * - [List] for multi-select and relation properties
+ * - [User] for people and created/edited by properties
+ * 
+ * @see PropertySpec
+ * @see <a href="https://developers.notion.com/reference/property-item-object">Property item object</a>
  */
 @Serializable
 sealed interface PropertyValue<T> {
+    /**
+     * The type of the property value.
+     * This matches the type of the corresponding property specification.
+     */
     val id: String
     val name: String
     val value: T
 }
 
+/**
+ * Builder-style class for constructing a list of property values.
+ * This class provides a fluent API for setting multiple property values
+ * when creating or updating a page.
+ * 
+ * Example usage:
+ * ```
+ * val properties = PropertyValueList().apply {
+ *     title("Name", "My Page")
+ *     number("Price", 99.99)
+ *     select("Status", "In Progress")
+ *     multiSelect("Tags", "Important", "Urgent")
+ * }
+ * ```
+ */
 class PropertyValueList {
     internal val propertyValueList = mutableListOf<PropertyValue<*>>()
 

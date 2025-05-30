@@ -9,7 +9,7 @@ import com.velkonost.knotion.internal.client.users.di.UsersModule
 import com.velkonost.knotion.internal.network.di.networkModule
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
-import org.koin.core.context.loadKoinModules
+import org.koin.core.context.startKoin
 
 internal class KNotionClientImpl(
     accessToken: String
@@ -20,16 +20,18 @@ internal class KNotionClientImpl(
     }
 
     private fun setupDI(token: String) {
-        loadKoinModules(
-            listOf(
-                networkModule(token),
-                DatabasesModule,
-                PagesModule,
-                BlocksModule,
-                UsersModule,
-                SearchModule
+        startKoin {
+            modules(
+                listOf(
+                    networkModule(token),
+                    DatabasesModule,
+                    PagesModule,
+                    BlocksModule,
+                    UsersModule,
+                    SearchModule
+                )
             )
-        )
+        }
     }
 
     override val users: KNotionUsers by inject()

@@ -4,6 +4,7 @@ import com.velkonost.knotion.client.KNotionPages
 import com.velkonost.knotion.extension.UuidString
 import com.velkonost.knotion.internal.api.model.page.request.CreatePageRequest
 import com.velkonost.knotion.internal.api.model.page.request.UpdatePageRequest
+import com.velkonost.knotion.internal.api.model.page.request.toApi
 import com.velkonost.knotion.internal.api.model.page.request.toStringValue
 import com.velkonost.knotion.internal.api.model.page.toModel
 import com.velkonost.knotion.internal.api.model.toApi
@@ -35,7 +36,7 @@ internal class KNotionPagesImpl(
         return service.createPage(
             CreatePageRequest(
                 parent = parentDatabase.toApi(),
-                properties = properties.propertyValueList.map { it.toStringValue() },
+                properties = properties.propertyValueList.associate { it.toApi() },
                 children = content,
                 icon = icon,
                 cover = cover,
@@ -69,7 +70,7 @@ internal class KNotionPagesImpl(
                 parent = parentPage.toApi(),
                 properties = PropertyValueList()
                     .title("title", title)
-                    .propertyValueList.map { it.toStringValue() },
+                    .propertyValueList.associate { it.toApi() },
                 children = content,
                 icon = icon,
                 cover = cover

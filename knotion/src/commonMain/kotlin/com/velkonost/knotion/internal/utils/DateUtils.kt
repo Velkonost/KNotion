@@ -12,12 +12,15 @@ internal object DateUtils {
         monthNumber()
         char('-')
         dayOfMonth()
-        char(' ')
+        char('T')
         hour()
         char(':')
         minute()
         char(':')
         second()
+        char('.')
+        chars("000")
+        char('Z')
     }
 
     fun nowMillis(): Timestamp {

@@ -1,12 +1,18 @@
+import com.vanniktech.maven.publish.JavadocJar
+import com.vanniktech.maven.publish.KotlinMultiplatform
+import com.vanniktech.maven.publish.SonatypeHost
+
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinx.serialization)
-    id("convention.publication")
+    alias(libs.plugins.kmm.publish)
+    alias(libs.plugins.dokka)
 }
 
-group = "com.velkonost.knotion"
+group = "com.velkonost"
 version = "1.0.0"
+description = "Unofficial wrapper for Notion API in Kotlin"
 
 kotlin {
     jvmToolchain(17)
@@ -14,9 +20,16 @@ kotlin {
     androidTarget { publishLibraryVariants("release") }
     jvm()
     js { browser() }
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
+    listOf(
+        iosX64(),
+        iosArm64(),
+        iosSimulatorArm64()
+    ).forEach {
+        it.binaries.framework {
+            baseName = "knotion"
+            isStatic = true
+        }
+    }
 
     sourceSets {
         commonMain.dependencies {
@@ -70,4 +83,53 @@ android {
     defaultConfig {
         minSdk = 21
     }
+}
+
+mavenPublishing {
+    configure(
+        KotlinMultiplatform(
+            sourcesJar = true,
+            javadocJar = JavadocJar.Dokka("dokkaHtml"),
+            androidVariantsToPublish = listOf("release"),
+        )
+    )
+
+    coordinates(
+        groupId = project.group.toString(),
+        artifactId = "knotion",
+        version = libs.versions.knotion.get()
+    )
+
+    // Configure POM metadata for the published artifact
+    pom {
+        name.set("Notion SDK KMP Library")
+        description.set(project.description)
+        inceptionYear.set("2025")
+        url.set("https://github.com/Velkonost/KNotion")
+
+        licenses {
+            license {
+                name.set("The Apache Software License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("repo")
+            }
+        }
+
+        developers {
+            developer {
+                id.set("velkonost")
+                name.set("Artem Klimenko")
+                email.set("velkonost@gmail.com")
+                url.set("t.me/velkonost")
+            }
+        }
+
+        scm {
+            url.set("https://github.com/Velkonost/KNotion")
+        }
+    }
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
 }

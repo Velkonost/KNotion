@@ -10,7 +10,7 @@ import kotlinx.serialization.Serializable
 internal data class ApiPropertyValueFormula(
     val type: String,
     val string: String? = null,
-    val number: String? = null,
+    val number: Long? = null,
     val boolean: Boolean? = null,
     val date: ApiDate? = null,
 )

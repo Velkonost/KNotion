@@ -13,7 +13,7 @@ import io.ktor.serialization.kotlinx.json.*
 import kotlinx.serialization.json.Json
 
 internal const val KTOR_REQUEST_TIMEOUT_MILLIS = 30_000L
-private const val URL = "https://api.notion.com/v1"
+private const val URL = "https://api.notion.com/v1/"
 private const val HEADER_NOTION_VERSION = "Notion-Version"
 private const val NOTION_API_VERSION = "2021-08-16"
 
@@ -23,11 +23,11 @@ internal fun ktorClient(
     val ktorClient = withPlatformEngine {
         Logging {
             logger = Logger.SIMPLE
-            level = LogLevel.NONE
+            level = LogLevel.ALL
         }
 
         requestRetry {
-            maxRetries = 5
+            maxRetries = 1
             retryIf { _, response ->
                 !response.status.isSuccess()
             }

@@ -35,7 +35,7 @@ internal data class ApiPropertyValue(
     val type: String,
     @SerialName("rich_text")
     val richText: List<ApiRichText>? = null,
-    val number: String? = null,
+    val number: Long? = null,
     val select: ApiSelectOption? = null,
     @SerialName("multi_select")
     val multiSelect: List<ApiSelectOption>? = null,

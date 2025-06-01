@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>KNotionPages</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="../../../index.html">
+                    knotion
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.0.0        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active=""
+                        data-filter=":knotion:dokkaHtml/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":knotion:dokkaHtml/commonMain"
+                                       data-filter=":knotion:dokkaHtml/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    knotion
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="knotion::com.velkonost.knotion.client/KNotionPages///PointingToDeclaration//137233312">
+  <div class="breadcrumbs"><a href="../../../index.html">knotion</a><span class="delimiter">/</span><a href="../index.html">com.velkonost.knotion.client</a><span class="delimiter">/</span><span class="current">KNotionPages</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>KNotion</span><wbr></wbr><span><span>Pages</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":knotion:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">KNotionPages</a></div><p class="paragraph">Interface for managing Notion pages through the Notion API. This interface provides methods to create, retrieve, update, and archive pages in your Notion workspace. Pages can be created either as children of databases or other pages, with support for various content types and properties.</p><p class="paragraph">Example usage:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">// Retrieve a page<br>val page = client.pages.getPage(&quot;page-id&quot;)<br><br>// Create a page in a database<br>val newPage = client.pages.createPage(<br>    parentDatabase = DatabaseReference(&quot;database-id&quot;),<br>    properties = PropertyValueList().apply {<br>        title(&quot;Name&quot;, &quot;My New Page&quot;)<br>    }<br>)</code></pre><span class="top-right-position"><span class="copy-icon"></span><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div></span></div></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="564635454%2FFunctions%2F137233312" anchor-label="createPage" id="564635454%2FFunctions%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="create-page.html"><span>create</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="564635454%2FFunctions%2F137233312"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":knotion:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="create-page.html"><span class="token function">createPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parentDatabase<span class="token operator">: </span><a href="../../com.velkonost.knotion.model/-database-reference/index.html">DatabaseReference</a><span class="token punctuation">, </span></span><span class="parameter ">icon<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-emoji-or-file/index.html">EmojiOrFile</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cover<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">properties<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.property.value/-property-value-list/index.html">PropertyValueList</a><span class="token operator"> = </span>PropertyValueList()<span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page.block/-mutable-block-list/index.html">MutableBlockList</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Creates a new page as a child of a database. This method allows you to create a page with custom properties and optional content blocks.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="create-page.html"><span class="token function">createPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parentDatabase<span class="token operator">: </span><a href="../../com.velkonost.knotion.model/-database-reference/index.html">DatabaseReference</a><span class="token punctuation">, </span></span><span class="parameter ">icon<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-emoji-or-file/index.html">EmojiOrFile</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cover<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">properties<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.property.value/-property-value-list/index.html">PropertyValueList</a><span class="token operator"> = </span>PropertyValueList()<span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page.block/-block-list-producer/index.html">BlockListProducer</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Creates a new page as a child of a database using a block producer. This overload allows for more dynamic block creation using a <a href="../../com.velkonost.knotion.model.page.block/-block-list-producer/index.html">BlockListProducer</a>.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="create-page.html"><span class="token function">createPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parentPage<span class="token operator">: </span><a href="../../com.velkonost.knotion.model/-page-reference/index.html">PageReference</a><span class="token punctuation">, </span></span><span class="parameter ">title<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.richText/-rich-text-list/index.html">RichTextList</a><span class="token operator"> = </span>RichTextList()<span class="token punctuation">, </span></span><span class="parameter ">icon<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-emoji-or-file/index.html">EmojiOrFile</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cover<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page.block/-mutable-block-list/index.html">MutableBlockList</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Creates a new page as a child of another page. This method creates a subpage with a title and optional content blocks.</p></div><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="create-page.html"><span class="token function">createPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">parentPage<span class="token operator">: </span><a href="../../com.velkonost.knotion.model/-page-reference/index.html">PageReference</a><span class="token punctuation">, </span></span><span class="parameter ">title<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.richText/-rich-text-list/index.html">RichTextList</a><span class="token operator"> = </span>RichTextList()<span class="token punctuation">, </span></span><span class="parameter ">icon<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-emoji-or-file/index.html">EmojiOrFile</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cover<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">content<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page.block/-block-list-producer/index.html">BlockListProducer</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Creates a new page as a child of another page using a block producer. This overload allows for more dynamic block creation using a <a href="../../com.velkonost.knotion.model.page.block/-block-list-producer/index.html">BlockListProducer</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1712677921%2FFunctions%2F137233312" anchor-label="getPage" id="-1712677921%2FFunctions%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="get-page.html"><span>get</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1712677921%2FFunctions%2F137233312"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":knotion:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="get-page.html"><span class="token function">getPage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">id<span class="token operator">: </span><a href="../../com.velkonost.knotion.extension/-uuid-string/index.html">UuidString</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Retrieves a page by its ID. This method fetches all page properties, content, and metadata.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-661550217%2FFunctions%2F137233312" anchor-label="setPageArchived" id="-661550217%2FFunctions%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="set-page-archived.html"><span>set</span><wbr></wbr><span>Page</span><wbr></wbr><span><span>Archived</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-661550217%2FFunctions%2F137233312"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":knotion:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="set-page-archived.html"><span class="token function">setPageArchived</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">id<span class="token operator">: </span><a href="../../com.velkonost.knotion.extension/-uuid-string/index.html">UuidString</a><span class="token punctuation">, </span></span><span class="parameter ">archived<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Archives or unarchives a page. Archived pages are not deleted but are hidden from the Notion UI. They can be unarchived later using this method with <code class="lang-kotlin">archived = false</code>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1552994537%2FFunctions%2F137233312" anchor-label="updatePage" id="-1552994537%2FFunctions%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+          <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="update-page.html"><span>update</span><wbr></wbr><span><span>Page</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1552994537%2FFunctions%2F137233312"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":knotion:dokkaHtml/commonMain"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">suspend </span><span class="token keyword">fun </span><a href="update-page.html"><span class="token function">updatePage</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">id<span class="token operator">: </span><a href="../../com.velkonost.knotion.extension/-uuid-string/index.html">UuidString</a><span class="token punctuation">, </span></span><span class="parameter ">icon<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-emoji-or-file/index.html">EmojiOrFile</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">cover<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.emojiOrFile/-file/index.html">File</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">properties<span class="token operator">: </span><a href="../../com.velkonost.knotion.model.property.value/-property-value-list/index.html">PropertyValueList</a></span></span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../com.velkonost.knotion.model.page/-page/index.html">Page</a></div><div class="brief "><p class="paragraph">Updates the properties of an existing page. This method allows you to modify the page's icon, cover, and properties. Note that page content cannot be updated using this method - use <a href="../-k-notion-blocks/index.html">KNotionBlocks</a> instead.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

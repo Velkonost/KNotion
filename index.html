@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>knotion</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="styles/font-jb-sans-auto.css" rel="Stylesheet">
+<link href="ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="ui-kit/ui-kit.min.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+    <nav class="navigation theme-dark" id="navigation-wrapper">
+            <a class="library-name--link" href="index.html">
+                    knotion
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.0.0        </div>
+        <div class="navigation-controls">
+        <div class="filter-section filter-section_loading" id="filter-section">
+                <button class="platform-tag platform-selector common-like" data-active=""
+                        data-filter=":knotion:dokkaHtml/commonMain">common</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox">
+                    <div class="dropdown--header"><span>Platform filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close platform filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option common-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":knotion:dokkaHtml/commonMain"
+                                       data-filter=":knotion:dokkaHtml/commonMain"/>
+                                <span class="checkbox--icon"></span>
+                                common
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </div>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                    <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                        data-role="dropdown-listbox">
+                        <div class="dropdown--header">
+                            <span>
+                                    knotion
+                            </span>
+                            <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                                <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                            </button>
+                        </div>
+                        <div class="sidebar--inner" id="sideMenu"></div>
+                    </ul>
+                    <div class="dropdown--overlay"></div>
+                </div>
+            </div>
+            <div id="main">
+<div class="main-content" id="content" pageIds="knotion::////PointingToDeclaration//137233312">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>knotion</span></span></h1>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="-1099307373%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.client" id="-1099307373%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.client/index.html">com.velkonost.knotion.client</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1099307373%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="970709243%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.extension" id="970709243%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.extension/index.html">com.velkonost.knotion.extension</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="970709243%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1873746843%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model" id="-1873746843%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model/index.html">com.velkonost.knotion.model</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1873746843%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-680205528%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.database" id="-680205528%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.database/index.html">com.velkonost.knotion.model.database</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-680205528%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-204783742%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.database.query" id="-204783742%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.database.query/index.html">com.velkonost.knotion.model.database.query</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-204783742%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1652560920%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.database.query.filter" id="-1652560920%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.database.query.filter/index.html">com.velkonost.knotion.model.database.query.filter</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1652560920%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1955697947%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.date" id="1955697947%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.date/index.html">com.velkonost.knotion.model.date</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1955697947%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1366292964%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.emojiOrFile" id="-1366292964%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.emojiOrFile/index.html">com.velkonost.knotion.model.emojiOrFile</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1366292964%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1447213382%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.exception" id="1447213382%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.exception/index.html">com.velkonost.knotion.model.exception</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1447213382%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1985093618%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.oauth" id="-1985093618%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.oauth/index.html">com.velkonost.knotion.model.oauth</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1985093618%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1108099260%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.page" id="1108099260%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.page/index.html">com.velkonost.knotion.model.page</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1108099260%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="679341467%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.page.block" id="679341467%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.page.block/index.html">com.velkonost.knotion.model.page.block</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="679341467%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="441031111%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.pagination" id="441031111%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.pagination/index.html">com.velkonost.knotion.model.pagination</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="441031111%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-864906494%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.property" id="-864906494%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.property/index.html">com.velkonost.knotion.model.property</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-864906494%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1657797262%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.property.sort" id="1657797262%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.property.sort/index.html">com.velkonost.knotion.model.property.sort</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1657797262%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-2095029653%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.property.spec" id="-2095029653%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.property.spec/index.html">com.velkonost.knotion.model.property.spec</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2095029653%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="-1175213243%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.property.value" id="-1175213243%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.property.value/index.html">com.velkonost.knotion.model.property.value</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1175213243%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="1354500182%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.richText" id="1354500182%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.richText/index.html">com.velkonost.knotion.model.richText</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1354500182%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+<a data-name="881161976%2FPackages%2F137233312" anchor-label="com.velkonost.knotion.model.user" id="881161976%2FPackages%2F137233312" data-filterable-set=":knotion:dokkaHtml/commonMain"></a>
+    <div class="table-row" data-filterable-current=":knotion:dokkaHtml/commonMain" data-filterable-set=":knotion:dokkaHtml/commonMain">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="knotion/com.velkonost.knotion.model.user/index.html">com.velkonost.knotion.model.user</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="881161976%2FPackages%2F137233312"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag common-like">common</div>
+            </div>
+          </div>
+        </div>
+        <div></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+        <span>© 2025 Copyright</span>
+        <span class="pull-right">
+            <span>Generated by </span>
+            <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                <span>dokka</span>
+            </a>
+        </span>
+    </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

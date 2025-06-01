@@ -85,6 +85,14 @@ android {
     }
 }
 
+tasks {
+    register<Jar>("dokkaJar") {
+        from(dokkaHtml)
+        dependsOn(dokkaHtml)
+        archiveClassifier.set("javadoc")
+    }
+}
+
 mavenPublishing {
     configure(
         KotlinMultiplatform(
